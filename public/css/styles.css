@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+nav{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body.bg-desire{    
+    background-color: rgb(234, 60, 83);
+}
+
+body.bg-white{    
+    background-color: white;
+}
+
+.text-statement{    
+    font-family: 'Anton', sans-serif;
+    color: #B43757;
+}
+
+section{
+    /* vh adalah view height */
+    min-height: 100vh;
+}
+
+.brand-name{
+    font-weight: 700;
+    font-size: 34px;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "kickpush-training",
+  "version": "1.0.0",
+  "description": "Second project of NodeJS using bootstrap framework",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasuhasri/kickpush-training.git"
+  },
+  "author": "Nasuha Asri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nasuhasri/kickpush-training/issues"
+  },
+  "homepage": "https://github.com/nasuhasri/kickpush-training#readme"
+}
