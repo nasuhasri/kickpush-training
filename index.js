@@ -1,18 +1,24 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const session = require('express-session');
 
 // set view engine to ejs - Embedded JavaScript
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-// Admin view
-app.get('/admin/login', (req, res) => {
-  res.render('admin/login')
-})
+//Session for user
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}))
 
+// routing
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', {
+    session: req.session,
+  })
 })
 
 const projectList = [
@@ -41,6 +47,23 @@ const projectList = [
 
 app.get('/projects', (req, res) => {
   res.render('projects', {projects: projectList})
+})
+
+// Admin view
+app.get('/admin/login', (req, res) => {
+  res.render('admin/login')
+})
+
+//Temporary
+app.get('admin/user/logged-in', (req, res) => {
+  console.log(req)
+  req.session.isLoggedIn = true
+  res.redirect('/')
+})
+
+app.get('/admin/user/logged-out', (req, res) => {
+  req.session.isLoggedIn = false
+  res.redirect('/')
 })
 
 app.listen(port, () => {
