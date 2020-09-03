@@ -12,7 +12,7 @@ app.use(session({
   secret: 'secret',
   saveUninitialized: true,
   resave: true
-}))
+}));
 
 // routing
 app.get('/', (req, res) => {
@@ -55,7 +55,7 @@ app.get('/admin/login', (req, res) => {
 })
 
 //Temporary
-app.get('admin/user/logged-in', (req, res) => {
+app.get('/admin/user/logged-in', (req, res) => {
   console.log(req)
   req.session.isLoggedIn = true
   res.redirect('/')
