@@ -6,23 +6,85 @@
   <body class="bg-white">
     <div class="container">
         <%- include('partials/nav') %>
-        <!-- Flex untuk centerkan text tu -->
-        <section class="d-flex align-items-center justify-content-center">
-            <div class="text-white text-center">
-                <h1 class="display-4"><strong>Nasuha Asri</strong></h1>
-                <p class="lead">Student who spend most of the time coding and sleeping</p>
-                <div>
-                    <img src="/img/icons/github.png">
-                    <img src="/img/icons/tw.png">
-                    <img src="/img/icons/ig.png">
+        <div class="d-flex justify-content-end">
+          <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Project</button>
+        </div>
+        <section class="section-half d-flex align-items-center justify-content-center">
+          <div class="text-center">
+              <h1 class="display-2 text-statement"><strong>Got No Time For People, <br /> Who Dont Appreciate Time.</strong></h1>
+          </div>
+        </section>
+        <section>
+          <div class="card-group">
+            <% for(var x = 0; x < projects.length; x++ ) { %>
+              <div class="card" style="width: 18rem;">
+                <img src="<%= projects[x].logo %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= projects[x].company %></h5>
+                  <p class="card-text"><%= projects[x].desciption %></p>
                 </div>
-            </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><span class="text-uppercase font-weight-bold"><%= projects[x].tech %></span></li>
+                  <li class="list-group-item"><span class="text-uppercase font-weight-bold"><%= projects[x].category %></span></li>
+                  <li class="list-group-item">
+                    <button type="button" class="btn btn-primary btn-md">Edit</button>
+                    <button type="button" class="btn btn-danger btn-md">Delete</button>
+                  </li>
+                </ul>
+              </div>
+              <% } %>
+          </div>  
         </section>
-        <section class="d-flex align-items-center justify-content-center">
-            <div class="text-white text-center">
-                <h1 class="display-4 text-statement"><strong>Got No Time For People Who Dont Appreciate Time</strong></h1>
-            </div>
-        </section>
+    </div>
+
+     <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Projects</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Technology</label>
+                <select multiple class="form-control">
+                  <option>Mobile</option>
+                  <option>Website</option>
+                  <option>Game</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select class="form-control">
+                  <option>Lifestyle</option>
+                  <option>Medical</option>
+                  <option>Entertainment</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
     <%- include('partials/script') %>
   </body>
