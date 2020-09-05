@@ -14,13 +14,6 @@ app.use(session({
   resave: true
 }));
 
-//Session for user
-// app.use(session({
-//   secret: 'secret',
-//   saveUninitialized: true,
-//   resave: true
-// }));
-
 // routing
 app.get('/', (req, res) => {
   res.render('index', {
@@ -72,7 +65,8 @@ app.get('/admin/user/logged-in', (req, res) => {
 
 app.get('/admin/user/logged-out', (req, res) => {
   req.session.isLoggedIn = false
-  console.log(req,session)
+  /** Kalau ada apa-apa error, boleh guna console.log untuk check **/
+  //console.log(req,session)
   res.redirect('/')
 })
 
