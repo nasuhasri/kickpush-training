@@ -6,9 +6,12 @@
   <body class="bg-white">
     <div class="container">
         <%- include('partials/nav', {session: session}) %>
+
+        <% if(session.isLoggedIn == true) { %>
         <div class="d-flex justify-content-end">
           <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Project</button>
         </div>
+        <% } %>
         <section class="section-half d-flex align-items-center justify-content-center">
           <div class="text-center">
               <h1 class="display-2 text-statement"><strong>Got No Time For People, <br /> Who Dont Appreciate Time.</strong></h1>
@@ -26,10 +29,12 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><span class="text-uppercase font-weight-bold"><%= projects[x].tech %></span></li>
                   <li class="list-group-item"><span class="text-uppercase font-weight-bold"><%= projects[x].category %></span></li>
+                  <% if(session.isLoggedIn == true) { %>
                   <li class="list-group-item">
                     <button type="button" class="btn btn-primary btn-md">Edit</button>
                     <button type="button" class="btn btn-danger btn-md">Delete</button>
                   </li>
+                  <% } %>
                 </ul>
               </div>
               <% } %>
