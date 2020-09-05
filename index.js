@@ -6,11 +6,12 @@ const session = require('express-session');
 // set view engine to ejs - Embedded JavaScript
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+
 /**  Secret ni mcm token which kalau user salah masukkan key, dia tak boleh access **/
 app.use(session({
   secret: 'secret',
-  saveUninitialized: false,
-  resave: false
+  saveUninitialized: true,
+  resave: true
 }));
 
 //Session for user
@@ -65,13 +66,13 @@ app.get('/admin/login', (req, res) => {
 
 //Temporary
 app.get('/admin/user/logged-in', (req, res) => {
-  console.log(req)
   req.session.isLoggedIn = true
   res.redirect('/')
 })
 
 app.get('/admin/user/logged-out', (req, res) => {
   req.session.isLoggedIn = false
+  console.log(req,session)
   res.redirect('/')
 })
 
