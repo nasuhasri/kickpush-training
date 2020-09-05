@@ -5,7 +5,7 @@
   </head>
   <body class="bg-white">
     <div class="container">
-        <%- include('partials/nav') %>
+        <%- include('partials/nav', {session: session}) %>
         <div class="d-flex justify-content-end">
           <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Project</button>
         </div>
@@ -20,8 +20,8 @@
               <div class="card" style="width: 18rem;">
                 <img src="<%= projects[x].logo %>" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"><%= projects[x].company %></h5>
-                  <p class="card-text"><%= projects[x].desciption %></p>
+                  <h5 class="card-title"><% projects[x].company %></h5>
+                  <p class="card-text"><% projects[x].desciption %></p>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><span class="text-uppercase font-weight-bold"><%= projects[x].tech %></span></li>

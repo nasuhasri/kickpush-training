@@ -6,18 +6,24 @@ const session = require('express-session');
 // set view engine to ejs - Embedded JavaScript
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-
-//Session for user
+/**  Secret ni mcm token which kalau user salah masukkan key, dia tak boleh access **/
 app.use(session({
   secret: 'secret',
-  saveUninitialized: true,
-  resave: true
+  saveUninitialized: false,
+  resave: false
 }));
+
+//Session for user
+// app.use(session({
+//   secret: 'secret',
+//   saveUninitialized: true,
+//   resave: true
+// }));
 
 // routing
 app.get('/', (req, res) => {
   res.render('index', {
-    session: req.session,
+    session: req.session
   })
 })
 
@@ -46,7 +52,10 @@ const projectList = [
 ]
 
 app.get('/projects', (req, res) => {
-  res.render('projects', {projects: projectList})
+  res.render('projects', {
+    session: req.session,
+    projects: projectList
+  })
 })
 
 // Admin view
